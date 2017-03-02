@@ -26,8 +26,18 @@
         height: 80px;
         display:block;
         border-radius: 50%;
-        background-color: white;
-        opacity: 0.05;
+        background: rgba(237,237,237,.2);
+        opacity: 0.2;
+        animation: button-beat 1s infinite;
     }
 }
 
+
+@keyframes button-beat {
+0%{
+box-shadow: 0 0 0 1.75rem rgba(255,255,255,0), 0 0 0 3.75rem rgba(255,255,255,0), 0 0 0 6rem rgba(255,255,255,0);
+}
+100%{
+box-shadow: 0 0 0 1rem rgba(255,255,255,.1), 0 0 0 2rem rgba(255,255,255,.15), 0 0 0 3rem rgba(255,255,255,.2);
+}
+}

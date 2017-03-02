@@ -28,6 +28,7 @@
             border-bottom: 1px solid white;
             width: 92%;
             margin-bottom: 20px;
+            animation: alert-border 0.5s infinite;
             select{
                 border: 0;
                 background: transparent;
@@ -47,6 +48,7 @@
             outline: 0;
             border-bottom: 1px solid white;
             font-size: 20px;
+            animation: alert-border 0.5s infinite;
         }
         input:focus{
             box-shadow: 0;
@@ -66,4 +68,13 @@ button{
     font-size: 36px;
     margin-bottom: 10%;
     font-family: 'Roboto', sans-serif;
+}
+
+@keyframes alert-border{
+    0%{
+        box-shadow: 0 0 0 0rem rgba(248, 67, 67,.7);
+    }
+    100%{
+        box-shadow: 0 0 0 0.7rem rgba(248, 67, 67,0);
+    }
 }
