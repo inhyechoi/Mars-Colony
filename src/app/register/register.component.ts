@@ -20,7 +20,6 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
 
   constructor() { 
-    //TODO: Call API, get jobs.
     this.marsJobs = [
       { name : "Alien Hunter", id : 1, description : "Hunting Aliens is life."},
       { name : "Yoga Teacher", id : 2, description : "Staying flexible on Mars."},

@@ -1,13 +1,14 @@
-<div class= "register-page">
+<div class= "report-page">
   <h1>Report Encounter</h1>
   <p>Safety on Mars is your reponsibility</p>
-  <form>
+  <form [formGroup]="reportForm">
       <div class="selectbox">
-      <select required>
-        <option value="(none)">Select alien type</option>
+      <select required formControlName="type" name="type">
+        <option value="none">Select alien type</option>
+        <option *ngFor="let alien of alienType" value="{{ alien.type }}">{{ alien.type }}</option>
       </select>   
       </div>
-      <textarea type="text" name="action" placeholder="Action taken"></textarea> 
+      <textarea type="text" name="action" placeholder="Action taken" required formControlName="action"></textarea> 
   </form>
-  <button>Submit Report</button>
+  <button (click)="logEncounter()">Submit Report</button>
 </div>
