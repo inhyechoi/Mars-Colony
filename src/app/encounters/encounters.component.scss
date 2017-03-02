@@ -1,0 +1,45 @@
+.encounters-page{
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    height: 100vh;
+    flex-direction: column;
+    .encounters-header{
+        position: fixed;
+        top:0;
+        left:0;
+        background: white;
+        width: 100%;
+        padding: 10px 0;
+    }
+    h1{
+        font-size: 38px;
+        font-weight: lighter;
+        margin-bottom: 0;
+        width:100%;
+    }
+    p{
+        font-size: 17px;
+        margin-top: 0;
+        width: 100%;
+    }
+}
+.encounters-footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 170px;
+    background: black;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    button{
+        color: white;
+        background: transparent;
+        border: none;
+        padding: 30px;
+        font-size: 38px;
+        font-weight: lighter;
+    }
+
+}

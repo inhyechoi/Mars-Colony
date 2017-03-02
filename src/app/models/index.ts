@@ -1,7 +1,14 @@
 export class NewColonist {
     name: string;
-    age: number;
-    job_id: Job;
+    age: string;
+    job_id: string;
+    
+    constructor (name: string, age:string, job_id: string){
+        this.name = name;
+        this.age = age;
+        this.job_id = job_id;
+
+    }
 }
 
 export class NewEncounter {
