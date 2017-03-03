@@ -2,16 +2,20 @@
 <div class= "register-page">
   <h1>Register</h1>
 
-  <form [formGroup]="registerForm">
+  <form [formGroup]="registerForm"
+    class="register-form"
+    [ngClass]="{'submitting': clickedButton}"
+    (ngSubmit)="postNewColonist($event)">
 
-      <input type="text" placeholder="Name" required formControlName="name" name="name">
-      <input type="text"  placeholder="Age" required formControlName="age" name="age"> 
+      <input type="text" placeholder="Name" formControlName="name" name="name">
+      <input type="number"  placeholder="Age" formControlName="age" name="age"> 
          <div class="selectbox">
-            <select required formControlName="job_id" name="job_id">
+            <select formControlName="job_id" name="job_id">
               <option value="none">Select occupation</option>
               <option *ngFor="let job of marsJobs" value="{{ job.id }}">{{ job.name }}</option> 
             </select>   
         </div>
+        <button type="submit">Check in</button>
   </form>
-  <button (click)="logColonist()">Check in</button>
+  
 </div>

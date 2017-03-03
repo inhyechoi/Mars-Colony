@@ -9,42 +9,79 @@ import {
   AbstractControl
 } from '@angular/forms';
 
+import { 
+  JOBS_URL, 
+  COLONISTS_URL 
+} from '../models/API';
+
+import { ColonistAPIService } from '../apiService/colonist';
+import{ JobsAPIService } from '../apiService/jobs'
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
+  providers: [ColonistAPIService, JobsAPIService]
 })
 export class RegisterComponent implements OnInit {
-  newColonist: NewColonist;
   marsJobs: Job[];
   registerForm: FormGroup;
+  clickedButton: boolean;
 
-  constructor() { 
-    this.marsJobs = [
-      { name : "Alien Hunter", id : 1, description : "Hunting Aliens is life."},
-      { name : "Yoga Teacher", id : 2, description : "Staying flexible on Mars."},
-      { name : "Dust Farmer", id : 3, description : "Somebody's got to do it..."},
-      { name : "Front-End Developer", id : 4, description: "Making apps on Mars."}
-    ]
-    this.registerForm = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-      age: new FormControl('',[Validators.required, this.acceptAge(18, 50)]),
-      job_id: new FormControl('none',[Validators.required])
-    });
-  
-  }
+  constructor(
+    private colonistApiService: ColonistAPIService,
+    private jobsAPIService: JobsAPIService
+    ){
+      this.getMarsJobs();
 
-  acceptAge(min: number, max: number){
-    return(control: AbstractControl):{[key:string]:any} => {
-      if(control.value < min || control.value > max){
-        return {'Sorry but not sorry! invalid age': {age: control.value}}
+      this.clickedButton = false;
+      
+      this.registerForm = new FormGroup({
+        name: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+        age: new FormControl('',[Validators.required, this.acceptAge(18, 50)]),
+        job_id: new FormControl('none',[Validators.required])
+      }); 
+    }
+
+    acceptAge(min: number, max: number){
+      return(control: AbstractControl):{[key:string]:any} => {
+        if(control.value < min || control.value > max){
+          return {'Sorry but not sorry! invalid age': {age: control.value}};
+        }
       }
     }
-  }
-  logColonist(){
-     console.log(this.registerForm);
-  }
-  ngOnInit() {
-  }
+
+
+    ngOnInit() {
+    } 
+
+    getMarsJobs(){
+      this.jobsAPIService.getMarsJobs( )
+                          .subscribe((result) => {
+                             this.marsJobs = result;
+                          });
+    }
+    postNewColonist(event){
+      event.preventDefault();
+      this.clickedButton = true;
+      
+      if(this.registerForm.invalid ){
+        // The form is invalid do nothing...
+
+      }
+      else{
+        const name = this.registerForm.get('name').value;
+        const age = this.registerForm.get('age').value;
+        const job_id = this.registerForm.get('job_id').value;
+
+        const newColonist: NewColonist = new NewColonist(name, age, job_id);
+        const colonistPostRequest = { colonist : newColonist } 
+
+        this.colonistApiService.saveColonist( colonistPostRequest )
+                              .subscribe((result) => {
+                                console.log('Colonist was saved:', result);
+                              });
+      }
+    }
 
 }

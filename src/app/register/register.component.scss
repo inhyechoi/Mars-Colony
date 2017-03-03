@@ -29,7 +29,7 @@
             border: 0;
             outline: 0;
             border-bottom: 1px solid white;
-            animation: alert-border 0.5s infinite;
+            // animation: alert-border 0.5s infinite;
         }
         input:focus{
             outline: #4c83db solid 2px;
@@ -38,6 +38,7 @@
             color: #ef3e41;
             font-size: 20px;
         }
+    
     }
 }
 .selectbox{
@@ -45,7 +46,6 @@
     width: 95%;
     height: 30px;
     margin: 0 auto;
-    animation: alert-border 0.5s infinite;
     select{
         border: 0;
         background: transparent;
@@ -64,8 +64,18 @@ button{
     width: 90%;
     color: white;
     font-size: 36px;
-    margin: 150px auto;
+    margin: 100px auto;
     font-family: 'Roboto', sans-serif;
+}
+
+
+.submitting{
+    input{
+        animation: alert-border 0.5s infinite; 
+    }
+    .selectbox{
+        animation: alert-border 0.5s infinite;
+    }
 }
 
 @keyframes alert-border{

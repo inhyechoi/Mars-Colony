@@ -1,53 +1,82 @@
 import { Component, OnInit } from '@angular/core';
 import { NewEncounter, Alien } from '../models';
-import{ 
-  FormGroup, 
-  FormControl, 
-  FormBuilder, 
-  Validators, 
-  ValidatorFn, 
+import {
+  FormGroup,
+  FormControl,
+  FormBuilder,
+  Validators,
+  ValidatorFn,
   AbstractControl
 } from '@angular/forms';
+
+import {
+  ALIENS_URL,
+  ENCOUNTERS_URL
+} from '../models/API';
+
+import { AliensAPIService } from '../apiService/aliens';
+import { EncountersAPIService } from '../apiService/encounters';
 
 @Component({
   selector: 'app-report',
   templateUrl: './report.component.html',
-  styleUrls: ['./report.component.scss']
+  styleUrls: ['./report.component.scss'],
+  providers: [AliensAPIService, EncountersAPIService]
 })
 export class ReportComponent implements OnInit {
-  newEncounter: NewEncounter;
-  alienType: Alien[];
+  alienTypes: Alien[];
   reportForm: FormGroup;
+  clickedButton: boolean;
+  newEncounter: NewEncounter;
 
-  constructor() { 
-    this.alienType = [
-      { type : "Special K", id: 1, sumitted_by: '1', description: "Special."},
-      { type : "Endomorph", id: 2, sumitted_by: '1', description: "Slimy, and gross."},
-      { type : "Endomorph", id: 3, sumitted_by: '1', description: "End-to-end freakyness"},
-      { type : "Octospider", id: 4, sumitted_by: '1', description: "Rendevous with Rama."},
-      { type : "The Predator", id: 5, sumitted_by: '1', description: "Yeah, he's here. Call Arnold."},
-      { type : "Darth Vader", id: 6, sumitted_by: '3', description: "Got daddy issues."},
-      { type : "Donald Trump", id: 7, sumitted_by: '3', description: "Douche."},
-      { type : "Yoda", id: 8, sumitted_by: '3', description: "Do or do not do; there is not try."}
-    ];
+  constructor(
+    private aliensAPIService: AliensAPIService,
+    private encounterAPIService: EncountersAPIService
+  ) {
+    this.getAlienTypes();
+
+    this.clickedButton = false;
+
     this.reportForm = new FormGroup({
-      type: new FormControl('none', [Validators.required]),
-      date: new FormControl('',[Validators.required]),
-      colonist_id: new FormControl('',[Validators.required]),
-      atype: new FormControl('',[Validators.required]),
-      action: new FormControl('',[Validators.required]),
-
+      atype: new FormControl('none', [Validators.required]),
+      action: new FormControl('', [Validators.required]),
     });
-
-
   }
-
-logEncounter(){
-  console.log(this.reportForm.controls);
-}
-
 
   ngOnInit() {
   }
 
+
+  getAlienTypes() {
+    this.aliensAPIService.getAlienTypes()
+      .subscribe((result) => {
+        this.alienTypes = result;
+      });
+  }
+  postNewEncounter(event) {
+    event.preventDefault();
+    this.clickedButton = true;
+    
+    if (this.reportForm.invalid) {
+      // The form is invalid do nothing...
+
+    }
+    else {
+      const date = '2016-11-18';
+      const atype = this.reportForm.get('atype').value;
+      const action = this.reportForm.get('action').value;
+      const colonist_id = 4;
+
+      const newEncounter: NewEncounter = new NewEncounter(date, atype, action, colonist_id);
+      const encounterPostRequest = { encounter: newEncounter }
+
+      this.encounterAPIService.saveNewEncounters(encounterPostRequest)
+                              .subscribe((result) => {
+                                console.log('Encounter was reported:', result);
+                              });
+    }
+  }
+
 }
+
+

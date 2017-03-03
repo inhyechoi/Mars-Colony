@@ -12,11 +12,18 @@ export class NewColonist {
 }
 
 export class NewEncounter {
-    id: number;
     date: string;
     atype: string;
     action: string;
     colonist_id: number;
+
+    constructor ( date: string, atype:string, action: string, colonist_id: number){
+        this.date = date;
+        this.atype = atype;
+        this.action = action;
+        this.colonist_id = colonist_id;
+
+    }
 }
 
 export interface Job {
