@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
    <a routerLink="/encounters"></a>
    <a routerLink="/report"></a>
    <a routerLink="/notfound"></a>
-      <router-outlet></router-outlet>
+   <router-outlet></router-outlet>
  `,
  styleUrls: ['./app.component.scss']
 })

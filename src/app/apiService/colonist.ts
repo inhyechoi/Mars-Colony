@@ -15,7 +15,6 @@ interface ColonistPostRequest {
 export class ColonistAPIService{
 
     constructor(private http: Http){}
-
     saveColonist(newColonist: ColonistPostRequest): Observable<Colonist>{
        
         const headers = new Headers();
@@ -23,6 +22,5 @@ export class ColonistAPIService{
         
         return this.http.post( COLONISTS_URL, newColonist, { headers })
                         .map((res: Response)=> res.json().colonist);
-
     }
 }

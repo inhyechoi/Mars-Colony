@@ -7,7 +7,6 @@ import 'rxjs/add/operator/map';
 import { Job } from '../models';
 import { JOBS_URL } from '../models/API';
 
-
 @Injectable()
 export class JobsAPIService{
 
@@ -16,6 +15,5 @@ export class JobsAPIService{
     getMarsJobs(): Observable<Job[]>{
         return this.http.get(JOBS_URL)    
                         .map((res: Response) => res.json().jobs);
-    }
-   
+    } 
 }

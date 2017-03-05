@@ -7,19 +7,16 @@ import 'rxjs/add/operator/map';
 import { NewEncounter, Encounter } from '../models';
 import { ENCOUNTERS_URL } from '../models/API';
 
-interface EncounterPostRequest {
-    encounter: NewEncounter;
-}
+interface EncounterPostRequest { encounter: NewEncounter; }
 
 @Injectable()
 export class EncountersAPIService{
 
     constructor(private http: Http){}
     
-     getEncounters(): Observable<Encounter[]>{
+    getEncounters(): Observable<Encounter[]>{
           return this.http.get(ENCOUNTERS_URL)    
-                        .map((res: Response) => res.json().encounters);
-        
+                          .map((res: Response) => res.json().encounters);
     }
     saveNewEncounters(newEncounter: EncounterPostRequest): Observable<Encounter>{
         const headers = new Headers();
@@ -27,10 +24,6 @@ export class EncountersAPIService{
         
         return this.http.post( ENCOUNTERS_URL, newEncounter, { headers })
                         .map((res: Response)=> res.json().encounter);
-
-
     } 
-    
-
 }
    
