@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewEncounter, Alien } from '../models';
+import { Router } from '@angular/router';
 import {
   FormGroup,
   FormControl,
@@ -31,8 +32,9 @@ export class ReportComponent implements OnInit {
 
   constructor(
     private aliensAPIService: AliensAPIService,
-    private encounterAPIService: EncountersAPIService
-  ) {
+    private encounterAPIService: EncountersAPIService,
+    private router: Router) {
+
     this.getAlienTypes();
 
     this.clickedButton = false;
@@ -56,7 +58,7 @@ export class ReportComponent implements OnInit {
   postNewEncounter(event) {
     event.preventDefault();
     this.clickedButton = true;
-    
+
     if (this.reportForm.invalid) {
       // The form is invalid do nothing...
 
@@ -64,18 +66,23 @@ export class ReportComponent implements OnInit {
     else {
       const date = '2016-11-18';
       const atype = this.reportForm.get('atype').value;
-      const action = this.reportForm.get('action').value;
-      const colonist_id = 4;
+      const action = this.reportForm.get('action').value;                           
+      const colonist_id = localStorage.getItem("colonist_id").toString();
 
       const newEncounter: NewEncounter = new NewEncounter(date, atype, action, colonist_id);
       const encounterPostRequest = { encounter: newEncounter }
 
       this.encounterAPIService.saveNewEncounters(encounterPostRequest)
                               .subscribe((result) => {
+                        
+                                    this.router.navigate(['encounters']);
                                 console.log('Encounter was reported:', result);
                               });
+                          
     }
   }
+
+
 
 }
 
