@@ -10,19 +10,19 @@
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    padding-top:200px;
     align-items: center;
     color: #edac8e;
     h1 {
         text-transform: uppercase;
-        padding: 0 1rem;
-        margin-top: 80px;
+        padding: 5rem 1rem 2rem 1rem;
         font-weight: lighter;
-        font-size: 36px;
+        font-size: 30px;
+        font-family: 'Monoton';
     }
     p {
         padding: 1rem;
-        font-size: 33px;
+        font-size: 27px;
         margin-bottom: 70px; 
     }
     a{

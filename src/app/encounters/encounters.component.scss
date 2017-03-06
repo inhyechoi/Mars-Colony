@@ -14,8 +14,10 @@
     }
     h1{
         font-size: 38px;
+        font-family: 'Monoton';
+        text-transform: uppercase;
         font-weight: lighter;
-        margin-bottom: 0;
+        margin: 1rem 0 0 0;
         width:100%;
     }
     p{
@@ -34,6 +36,7 @@
             font-size: 18px;
             width: 100%;
             margin-bottom: 1rem;
+            color: #7a7a7a;
         }
     }
 }

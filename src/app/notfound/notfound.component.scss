@@ -1,0 +1,30 @@
+.notfound-page{
+    height: 100vh;
+    background-image:
+        radial-gradient(
+        #ea2d10,
+        #770e08
+        );
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    h1 {
+        text-transform: uppercase;
+        padding: 3rem 1rem 1rem 1rem;
+        border-bottom: 1px solid white;
+        font-weight: lighter;
+        font-size: 30px;
+        font-family: 'Monoton';
+    }
+    p {
+        padding: 1rem;
+        font-size: 20px; 
+        line-height:1.1;
+    }
+    h2{
+        font-size: 18px;
+    }
+}

@@ -1,15 +1,22 @@
 .register-page{
     height: 100vh;
     width: 100vw;
-    background-color: black;
+    background-image:
+        radial-gradient(
+        #2f3a4f,
+        #181e28
+        );
     display: flex;
     flex-direction: column;
     text-align: center;
     h1 {
-        color: white;
+        font-family: 'Monoton';
+        text-transform: uppercase;
+        color: #b5b5cc;
         width: 100%;
         height: 30px;
         padding: 10px;
+        margin: 3rem auto 3rem;
         font-weight: lighter;
         font-size: 36px;
     }
@@ -23,31 +30,33 @@
             padding: 10px 10px;
             margin-top: 15px;
             margin-bottom: 20px;
-            background-color: black;
+            background-color: #374151;
             color:white;
             font-size: 20px;
+            font-family: 'Roboto';
             border: 0;
             outline: 0;
-            border-bottom: 1px solid white;
+            border-bottom: 1px dashed #4f5c72;
         }
         input:focus{
             outline: #4c83db solid 2px;
         }
         ::placeholder{
-            color: #ef3e41;
+            color: #b5b5cc;
             font-size: 20px;
         }
     }
 }
 .selectbox{
-    border-bottom: 1px solid white;
+    border-bottom: 1px dashed #4f5c72;
     width: 95%;
     height: 30px;
-    margin: 0 auto;
+    margin: 1rem auto;
     select{
         border: 0;
         background: transparent;
-        color: #ef3e41;
+        font-family: 'Roboto';
+        color: #b5b5cc;
         font-size: 20px;
         width:100%;  
         appearance: none;
@@ -59,9 +68,9 @@ button{
     border: none;
     height: 100px;
     width: 90%;
-    color: white;
-    font-size: 36px;
-    margin: 100px auto;
+    color: #b5b5cc;
+    font-size: 30px;
+    margin: 50px auto;
     font-family: 'Roboto', sans-serif;
 }
 .submitting{
