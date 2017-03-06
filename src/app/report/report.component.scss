@@ -3,14 +3,14 @@
     width: 100vw;
     background-image:
         radial-gradient(
-       #f7ef18,
-        #f2ee8e
+       #b5ab19,
+        #f7ef18
         );
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
-    color: #f23e3e;
+    color: #686105;
     h1 {
         font-family: 'Monoton';
         text-transform: uppercase;
@@ -32,14 +32,14 @@
         flex-wrap: wrap;
         justify-content: center;
        .selectbox{
-            border-bottom: 1px dashed #fffcbc;
+            border-bottom: 1px dashed #ede57b;
             width: 92%;
             margin-bottom: 20px;
             select{
                 font-family: 'Roboto';
                 border: 0;
                 background: transparent;
-                color: black;
+                color: #686105;
                 font-size: 20px;
                 width:100%;  
                 appearance: none;
@@ -53,7 +53,7 @@
             margin-bottom: 20px;
             border: 0;
             outline: 0;
-            background-color: #fffcbc;
+            background-color: #ede57b;
             font-size: 20px;
             font-family: 'Roboto';
         }
@@ -61,7 +61,7 @@
             box-shadow: 0;
         }
         ::placeholder{
-            color: black;
+            color: #686105;
             font-size: 20px;
         }
     }
@@ -71,7 +71,7 @@ button{
     border: none;
     height: 100px;
     width: 90%;
-    color: #f23e3e;
+    color: #686105;
     font-size: 30px;
     margin-bottom: 10%;
     font-family: 'Roboto', sans-serif;
