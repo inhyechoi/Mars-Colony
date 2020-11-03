@@ -13,10 +13,10 @@ Web-based application project using Angular 2
 
 ## What I have learned
 
-Use Get and Post HTTP request using Angular's HTTP service in order to 
-* save the information on both new Colonist and new Alien encounter.
+Use GET and POST HTTP request using Angular 2 with internal API in order to 
+* save the information on both new colonist and new alien encounter.
 * get the list of the recent alien encounters from Postman.
-* create a new Encounter report.
+* create a new encounter report.
 
 Use router to navigate through different pages.
-Use the local storage to save the new Colonist object. 
+Use the local storage to save new colonist object. 
