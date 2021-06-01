@@ -1,5 +1,5 @@
 # MarsColony
-![main image] (screenshot/screenshot.png)
+![main image] (/screenshot/screenshot.png?raw=true "Mars Colony")
 
 Web-based application project using Angular 2
 
