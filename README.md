@@ -1,5 +1,7 @@
 # MarsColony
 ![main image] (/screenshot/screenshot.png?raw=true "Mars Colony")
+<img src="https://github.com/inhyechoi/Mars-Colony/blob/master/screenshot/screenshot.png" alt="Main Image of Mars Colony" width="auto" height="500">
+
 
 Web-based application project using Angular 2
 
